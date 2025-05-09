@@ -1,49 +1,49 @@
+# ABGI Ferramentas — Sistema de Gestão com Livewire e Modais
 
-# 💼 ABGI Ferramentas — Sistema de Gestão de Ferramentas
+Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Analista de Sistemas Fullstack** na **ABGI Brasil**.  
+A aplicação tem como objetivo gerenciar ferramentas utilizadas pela equipe, com foco em uma experiência fluida, moderna e reativa — utilizando **Laravel 10**, **Livewire 2**, **Bootstrap 5** e **SQL Server**.
 
-Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Analista de Sistemas Fullstack na Abgi Brasil**, com foco em tecnologias modernas e alinhadas às exigências da posição.
-
-A aplicação tem como objetivo facilitar o gerenciamento de ferramentas utilizadas internamente pela equipe, permitindo o cadastro, edição, visualização com filtros dinâmicos e paginação — tudo em uma interface leve, responsiva e eficiente.
-
-O sistema foi construído utilizando **Laravel 10**, **Livewire 2**, **Bootstrap 5** e banco de dados **SQL Server**, com atenção especial à organização do código, boas práticas, clareza e usabilidade.
+Todos os cadastros, edições e exclusões são realizados **via modal dinâmico**, sem recarregar a página, garantindo uma navegação mais ágil e responsiva.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Laravel 10** — Framework PHP moderno, robusto e produtivo.
-- **Livewire 2** — Para interatividade sem sair do Blade.
-- **Bootstrap 5** — Layout responsivo e elegante.
-- **PHP 8.1** — Compatível com drivers atuais do SQL Server.
-- **SQL Server** — Banco de dados relacional utilizado na empresa.
-- **Composer** — Gerenciador de dependências PHP.
+- **Laravel 10** — Framework PHP moderno e robusto
+- **Livewire 2** — Componentes dinâmicos e reativos em Blade
+- **Bootstrap 5** — Interface moderna e responsiva
+- **SQL Server** — Banco de dados utilizado
+- **PHP 8.1** — Versão mínima recomendada com suporte a `pdo_sqlsrv`
+- **Composer** — Gerenciador de dependências PHP
 
 ---
 
-## 🛠️ Funcionalidades
+## 🧠 Funcionalidades Implementadas
 
-- ✅ Cadastro e edição de ferramentas (nome, versão, status, path)
+- ✅ Cadastro de nova ferramenta (via modal)
+- ✅ Edição de ferramenta existente (via modal com preenchimento automático)
+- ✅ Exclusão com confirmação (modal)
 - ✅ Filtro por status (Ativo/Inativo)
-- ✅ Busca dinâmica por nome
-- ✅ Paginação
-- ✅ Feedbacks visuais e validações com mensagens de erro
-- ✅ Interface limpa, responsiva e intuitiva com Bootstrap
+- ✅ Busca por nome (reativa)
+- ✅ Paginação com Livewire
+- ✅ Atualização de status com clique
+- ✅ Validação com feedback visual
+- ✅ Interface 100% reativa com Livewire
 
 ---
 
-## 📂 Estrutura da Tabela
+## 🗂️ Estrutura da Tabela
 
 Tabela: `ferramentas`
 
-| Campo      | Tipo     | Descrição                             |
-|------------|----------|-----------------------------------------|
-| id         | integer  | Identificador único                     |
-| nome       | string   | Nome da ferramenta                      |
-| versao     | string   | Versão da ferramenta                    |
-| status     | enum     | Ativo ou Inativo                        |
-| path       | string   | Caminho para a ferramenta               |
-| created_at | datetime | Data de criação                         |
-| updated_at | datetime | Data de atualização                     |
+| Campo     | Tipo     | Descrição                           |
+|-----------|----------|-------------------------------------|
+| id        | integer  | Identificador único                 |
+| nome      | string   | Nome da ferramenta                  |
+| versao    | string   | Versão da ferramenta                |
+| status    | enum     | Ativo ou Inativo                    |
+| path      | string   | Caminho/Path da ferramenta          |
+| created_at / updated_at | datetime | Registro de data de criação e atualização |
 
 ---
 
