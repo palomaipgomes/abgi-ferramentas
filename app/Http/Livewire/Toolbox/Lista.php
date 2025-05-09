@@ -129,7 +129,7 @@ class Lista extends Component
             fclose($handle);
         }, 200, [
             'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="ferramentas.csv"',
+            'Content-Disposition' => "attachment; filename=\"$nomeArquivo\"",
         ]);
     }
 
@@ -146,7 +146,7 @@ class Lista extends Component
         }
 
         return view('livewire.toolbox.lista', [
-            'ferramentas' => $query->orderBy('nome')->paginate(5),
+            'ferramentas' => $query->orderBy('nome')->paginate(10),
         ]);
     }
 }

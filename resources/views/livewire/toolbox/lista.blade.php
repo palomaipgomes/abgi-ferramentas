@@ -41,7 +41,7 @@
             </thead>
             <tbody>
                 @forelse($ferramentas as $f)
-                    <tr>
+                    <tr wire:key="item-{{ $f->id }}">
                         <td>{{ $f->nome }}</td>
                         <td>{{ $f->versao }}</td>
                         <td>
@@ -69,7 +69,7 @@
         {{ $ferramentas->links() }}
     </div>
 
-    {{-- Modal Livewire sem Alpine --}}
+    {{-- Modal Livewire --}}
     @if($modalAberto)
         <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);" aria-modal="true">
             <div class="modal-dialog">

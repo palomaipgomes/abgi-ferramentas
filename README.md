@@ -3,7 +3,8 @@
 Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Analista de Sistemas Fullstack** na **ABGI Brasil**.  
 A aplicação tem como objetivo gerenciar ferramentas utilizadas pela equipe, com foco em uma experiência fluida, moderna e reativa — utilizando **Laravel 10**, **Livewire 2**, **Bootstrap 5** e **SQL Server**.
 
-Todos os cadastros, edições e exclusões são realizados **via modal dinâmico**, sem recarregar a página, garantindo uma navegação mais ágil e responsiva. A nova funcionalidade de **Exportação CSV** permite salvar a lista de ferramentas em um clique para fins de backup, análise ou integração.
+Todos os cadastros, edições e exclusões são realizados **via modal dinâmico**, sem recarregar a página, garantindo uma navegação mais ágil e responsiva.  
+A funcionalidade adicional de **Exportação CSV** permite salvar a lista de ferramentas com um clique, facilitando backup, análise ou integração com outros sistemas.
 
 ---
 
@@ -15,6 +16,9 @@ Todos os cadastros, edições e exclusões são realizados **via modal dinâmico
 - **SQL Server** — Banco de dados utilizado  
 - **PHP 8.1** — Versão mínima recomendada com suporte a `pdo_sqlsrv`  
 - **Composer** — Gerenciador de dependências PHP  
+- **Alpine.js** — Utilizado para controle do modal de forma leve
+
+> ℹ️ Para saber mais sobre Livewire, acesse: https://laravel-livewire.com
 
 ---
 
@@ -25,10 +29,10 @@ Todos os cadastros, edições e exclusões são realizados **via modal dinâmico
 - ✅ Exclusão com confirmação (modal)
 - ✅ Filtro por status (Ativo/Inativo)
 - ✅ Busca por nome (reativa)
-- ✅ Paginação com Livewire
+- ✅ Paginação com 10 itens por página
 - ✅ Atualização de status com clique
 - ✅ Exportação da lista para CSV
-- ✅ Validação com feedback visual
+- ✅ Validação com feedback visual direto no formulário
 - ✅ Interface 100% reativa com Livewire
 
 ---
@@ -37,14 +41,14 @@ Todos os cadastros, edições e exclusões são realizados **via modal dinâmico
 
 Tabela: `ferramentas`
 
-| Campo                   | Tipo     | Descrição                                        |
-|------------------------|----------|--------------------------------------------------|
-| id                     | integer  | Identificador único                              |
-| nome                   | string   | Nome da ferramenta                               |
-| versao                 | string   | Versão da ferramenta                             |
-| status                 | enum     | Ativo ou Inativo                                 |
-| path                   | string   | Caminho/Path da ferramenta                       |
-| created_at / updated_at| datetime | Datas de criação e atualização automática        |
+| Campo                    | Tipo     | Descrição                                    |
+|-------------------------|----------|----------------------------------------------|
+| id                      | integer  | Identificador único                          |
+| nome                    | string   | Nome da ferramenta                           |
+| versao                  | string   | Versão da ferramenta                         |
+| status                  | enum     | Ativo ou Inativo                             |
+| path                    | string   | Caminho/Path da ferramenta                   |
+| created_at / updated_at | datetime | Registro automático de criação e atualização |
 
 ---
 
@@ -94,13 +98,19 @@ php artisan key:generate
 php artisan migrate
 ```
 
-### 6. Subir o servidor local
+### 6. Publicar os assets do Livewire (caso necessário)
+
+```bash
+php artisan livewire:publish --assets
+```
+
+### 7. Subir o servidor local
 
 ```bash
 php artisan serve
 ```
 
-### 7. Acessar no navegador
+### 8. Acessar no navegador
 
 ```
 http://localhost:8000/ferramentas
@@ -110,19 +120,19 @@ http://localhost:8000/ferramentas
 
 ## 🧭 Rotas Disponíveis
 
-| Rota                       | Descrição                                  |
-|----------------------------|---------------------------------------------|
-| `/ferramentas`             | Listagem com busca, filtro e modais         |
-| `/ferramentas/exportar`    | Exporta a lista atual de ferramentas em CSV |
+| Rota                    | Descrição                                      |
+|-------------------------|-----------------------------------------------|
+| `/ferramentas`          | Listagem com busca, filtro, modais e ações    |
+| `/ferramentas/exportar` | Exporta a lista filtrada de ferramentas (CSV) |
 
 ---
 
 ## 💡 Melhorias Futuras
 
 - 🔒 Autenticação e controle de usuários
-- 📊 Dashboard com estatísticas de ferramentas
-- 🔎 Filtros combinados por versão ou path
-- 📁 Upload de anexos (manual, licença etc.)
+- 📊 Dashboard com estatísticas e gráficos
+- 🔎 Filtros combinados por versão, status e diretório
+- 📁 Upload de anexos (ex: manuais, licenças, prints)
 - 🧾 Logs de alteração por usuário
 - 🌍 Multiusuário com permissões por perfil
 
@@ -130,7 +140,7 @@ http://localhost:8000/ferramentas
 
 ## 📌 Considerações Finais
 
-Este projeto foi construído com foco na clareza do código, organização dos componentes, padronização e boa experiência do usuário.  
-Está pronto para expansão e integração com outras funcionalidades mais avançadas, conforme o crescimento do uso interno na ABGI Brasil.
+Este projeto foi construído com foco na clareza do código, organização dos componentes, padronização e excelente experiência do usuário.  
+Está pronto para expansão e integração com outras funcionalidades mais avançadas, conforme o crescimento do uso interno na **ABGI Brasil**.
 
 **Desenvolvido com 💜 por Paloma Gomes**
