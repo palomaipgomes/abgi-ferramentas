@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Toolbox;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Ferramenta;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class Lista extends Component
 {
@@ -92,6 +93,44 @@ class Lista extends Component
     public function updatingStatus()
     {
         $this->resetPage();
+    }
+
+    public function exportarCsv()
+    {
+        $nomeArquivo = 'ferramentas_export_' . date('Y-m-d_H-i-s') . '.csv';
+
+        return new StreamedResponse(function () {
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, ['ID', 'Nome', 'Versão', 'Status', 'Path', 'Criado em']);
+
+            $query = Ferramenta::query();
+
+            if ($this->busca) {
+                $query->where('nome', 'like', '%' . $this->busca . '%');
+            }
+
+            if ($this->status) {
+                $query->where('status', $this->status);
+            }
+
+            $query->orderBy('nome')->chunk(200, function ($ferramentas) use ($handle) {
+                foreach ($ferramentas as $f) {
+                    fputcsv($handle, [
+                        $f->id,
+                        $f->nome,
+                        $f->versao,
+                        $f->status,
+                        $f->path,
+                        $f->created_at->format('Y-m-d H:i'),
+                    ]);
+                }
+            });
+
+            fclose($handle);
+        }, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="ferramentas.csv"',
+        ]);
     }
 
     public function render()

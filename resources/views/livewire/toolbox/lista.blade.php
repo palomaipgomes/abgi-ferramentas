@@ -2,7 +2,12 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Ferramentas</h2>
-            <button wire:click="abrirModal" class="btn btn-success">+ Nova Ferramenta</button>
+            <div class="d-flex gap-2">
+                <a href="{{ route('ferramentas.exportar') }}" class="btn btn-outline-secondary">
+                    📤 Exportar CSV
+                </a>
+                <button wire:click="abrirModal" class="btn btn-success">+ Nova Ferramenta</button>
+            </div>
         </div>
 
         @if (session()->has('sucesso'))

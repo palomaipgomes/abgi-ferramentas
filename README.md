@@ -3,18 +3,18 @@
 Este projeto foi desenvolvido como parte do processo seletivo para a vaga de **Analista de Sistemas Fullstack** na **ABGI Brasil**.  
 A aplicação tem como objetivo gerenciar ferramentas utilizadas pela equipe, com foco em uma experiência fluida, moderna e reativa — utilizando **Laravel 10**, **Livewire 2**, **Bootstrap 5** e **SQL Server**.
 
-Todos os cadastros, edições e exclusões são realizados **via modal dinâmico**, sem recarregar a página, garantindo uma navegação mais ágil e responsiva.
+Todos os cadastros, edições e exclusões são realizados **via modal dinâmico**, sem recarregar a página, garantindo uma navegação mais ágil e responsiva. A nova funcionalidade de **Exportação CSV** permite salvar a lista de ferramentas em um clique para fins de backup, análise ou integração.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Laravel 10** — Framework PHP moderno e robusto
-- **Livewire 2** — Componentes dinâmicos e reativos em Blade
-- **Bootstrap 5** — Interface moderna e responsiva
-- **SQL Server** — Banco de dados utilizado
-- **PHP 8.1** — Versão mínima recomendada com suporte a `pdo_sqlsrv`
-- **Composer** — Gerenciador de dependências PHP
+- **Laravel 10** — Framework PHP moderno e robusto  
+- **Livewire 2** — Componentes dinâmicos e reativos em Blade  
+- **Bootstrap 5** — Interface moderna e responsiva  
+- **SQL Server** — Banco de dados utilizado  
+- **PHP 8.1** — Versão mínima recomendada com suporte a `pdo_sqlsrv`  
+- **Composer** — Gerenciador de dependências PHP  
 
 ---
 
@@ -27,6 +27,7 @@ Todos os cadastros, edições e exclusões são realizados **via modal dinâmico
 - ✅ Busca por nome (reativa)
 - ✅ Paginação com Livewire
 - ✅ Atualização de status com clique
+- ✅ Exportação da lista para CSV
 - ✅ Validação com feedback visual
 - ✅ Interface 100% reativa com Livewire
 
@@ -36,14 +37,14 @@ Todos os cadastros, edições e exclusões são realizados **via modal dinâmico
 
 Tabela: `ferramentas`
 
-| Campo     | Tipo     | Descrição                           |
-|-----------|----------|-------------------------------------|
-| id        | integer  | Identificador único                 |
-| nome      | string   | Nome da ferramenta                  |
-| versao    | string   | Versão da ferramenta                |
-| status    | enum     | Ativo ou Inativo                    |
-| path      | string   | Caminho/Path da ferramenta          |
-| created_at / updated_at | datetime | Registro de data de criação e atualização |
+| Campo                   | Tipo     | Descrição                                        |
+|------------------------|----------|--------------------------------------------------|
+| id                     | integer  | Identificador único                              |
+| nome                   | string   | Nome da ferramenta                               |
+| versao                 | string   | Versão da ferramenta                             |
+| status                 | enum     | Ativo ou Inativo                                 |
+| path                   | string   | Caminho/Path da ferramenta                       |
+| created_at / updated_at| datetime | Datas de criação e atualização automática        |
 
 ---
 
@@ -109,27 +110,27 @@ http://localhost:8000/ferramentas
 
 ## 🧭 Rotas Disponíveis
 
-| Rota                       | Descrição                            |
-|----------------------------|----------------------------------------|
-| `/ferramentas`             | Listagem com busca e filtros          |
-| `/ferramentas/novo`        | Cadastro de nova ferramenta           |
-| `/ferramentas/{id}/editar` | Edição de ferramenta existente        |
+| Rota                       | Descrição                                  |
+|----------------------------|---------------------------------------------|
+| `/ferramentas`             | Listagem com busca, filtro e modais         |
+| `/ferramentas/exportar`    | Exporta a lista atual de ferramentas em CSV |
 
 ---
 
 ## 💡 Melhorias Futuras
 
-- Exclusão com confirmação
-- Exportação de lista para CSV
-- Filtros avançados por versão ou diretório
-- Autenticação e controle de usuários
-- Dashboard com estatísticas de ferramentas
+- 🔒 Autenticação e controle de usuários
+- 📊 Dashboard com estatísticas de ferramentas
+- 🔎 Filtros combinados por versão ou path
+- 📁 Upload de anexos (manual, licença etc.)
+- 🧾 Logs de alteração por usuário
+- 🌍 Multiusuário com permissões por perfil
 
 ---
 
 ## 📌 Considerações Finais
 
 Este projeto foi construído com foco na clareza do código, organização dos componentes, padronização e boa experiência do usuário.  
-Está pronto para expansão e integração com outras funcionalidades mais avançadas, conforme o crescimento do uso interno na Abgi Brasil.
+Está pronto para expansão e integração com outras funcionalidades mais avançadas, conforme o crescimento do uso interno na ABGI Brasil.
 
 **Desenvolvido com 💜 por Paloma Gomes**
